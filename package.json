@@ -1,0 +1,23 @@
+{
+  "name": "css-module-template-loader",
+  "version": "0.0.1",
+  "description": "Webpack HTML loader for CSS modules",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava --verbose"
+  },
+  "keywords": [
+    "Webpack",
+    "CSS",
+    "Loader",
+    "CSS",
+    "Modules",
+    "HTML"
+  ],
+  "author": "Juan @jkristoffer",
+  "license": "MIT",
+  "dependencies": {
+    "ava": "^0.18.1",
+    "cheerio": "^0.22.0"
+  }
+}
