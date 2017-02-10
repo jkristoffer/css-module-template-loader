@@ -1,10 +1,10 @@
 {
   "name": "css-module-template-loader",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Webpack HTML loader for CSS modules",
   "repository": {
-     "type": "git", 
-     "url": "https://github.com/jkristoffer/css-module-template-loader.git" 
+    "type": "git",
+    "url": "https://github.com/jkristoffer/css-module-template-loader.git"
   },
   "main": "index.js",
   "scripts": {
