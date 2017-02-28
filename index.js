@@ -23,8 +23,11 @@ const cssModuleTemplateLoader = content => {
 
       return html.replace(regexp, stylesReplacer(styles));
    };
+   function cleanContent(content) {
+      return JSON.stringify(content).replace(/[\t\n]/g, '');
+   }
    
-   return 'module.exports = ' + fn.toString().replace('"--PLACEHOLDER--"', JSON.stringify(content))
+   return 'module.exports = ' + fn.toString().replace('"--PLACEHOLDER--"', cleanContent(content))
                                              .replace(/\r?\n|\r/g, " ");
 };
 
