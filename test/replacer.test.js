@@ -16,7 +16,7 @@ const mockHTML = '<div class="hello olleh">World</div>';
 const mockCSSModuleOut = { "hello": "g33t1ng5", "olleh": "aloha" };
 const r = /(class=")([^"]+)/g;
 
-test('Test1', t => {
+test('replacer', t => {
    const result = mockHTML.replace(r, stylesReplacer(mockCSSModuleOut));
 
    t.is(result, '<div class="g33t1ng5 aloha">World</div>');

@@ -24,3 +24,13 @@ test('multiple classnames', t => {
 
    t.is(result, '<div class="g33t1ng5 aloha">World</div>');
 });
+
+
+test('no tabs or new lines', t => {
+   const mockHTML = '<div class="hello olleh">World</div>';
+   const mockCSSModuleOut = { "hello": "g33t1ng5", "olleh": "aloha" };
+   const result = getMockLoaderResult(mockHTML)(mockCSSModuleOut);
+
+   t.is(result.indexOf('\t'), -1);
+   t.is(result.indexOf('\n'), -1);
+});
