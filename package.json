@@ -1,6 +1,6 @@
 {
   "name": "css-module-template-loader",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Webpack HTML loader for CSS modules",
   "repository": {
     "type": "git",
