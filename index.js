@@ -12,23 +12,22 @@ const cssModuleTemplateLoader = content => {
             if(!$1) return $0;
 
             var classNames = $1;
-            var newClassNames = classNames.split(' ')
+            var newClassNames = classNames.split(" ")
                                             .map(n => styles[n] || n)
-                                            .join(' ');
+                                            .join(" ");
 
             return $0 + newClassNames;
          }   
       }
-      var regexp = /(class=")([^"]+)/g;
+      var regexp = /(class=["'])([^"']+)/g;
 
       return html.replace(regexp, stylesReplacer(styles));
    };
-   function cleanContent(content) {
-      return JSON.stringify(content).replace(/[\t\n]/g, '');
+   function clean(content) {
+      return content.replace(/[\t\n]/g, "");
    }
    
-   return 'module.exports = ' + fn.toString().replace('"--PLACEHOLDER--"', cleanContent(content))
-                                             .replace(/\r?\n|\r/g, " ");
+   return 'module.exports = ' + clean(fn.toString()).replace('"--PLACEHOLDER--"', JSON.stringify(clean(content)));
 };
 
 const replacer = classnames => classnames.split(' ')

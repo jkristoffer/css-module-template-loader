@@ -27,10 +27,29 @@ test('multiple classnames', t => {
 
 
 test('no tabs or new lines', t => {
-   const mockHTML = '<div class="hello olleh">World</div>';
+   const mockHTML = '<div class="hello olleh">\n\tWorld\n</div>';
    const mockCSSModuleOut = { "hello": "g33t1ng5", "olleh": "aloha" };
    const result = getMockLoaderResult(mockHTML)(mockCSSModuleOut);
 
    t.is(result.indexOf('\t'), -1);
    t.is(result.indexOf('\n'), -1);
+});
+
+test('single and double quotes', t => {
+   const mockCSSModuleOut = { "hello": "g33t1ng5", "olleh": "aloha" };
+   
+   const mockHTML = '<div class="hello olleh">\n\tWorld\n</div>';
+   const mockHTML2 = "<div class='hello olleh'>\n\tWorld\n</div>";
+   const mockHTML3 = "<div class=\"hello olleh\">\n\tWorld\n</div>";
+   const mockHTML4 = '<div class=\"hello olleh\">\n\tWorld\n</div>';
+
+   const result = getMockLoaderResult(mockHTML)(mockCSSModuleOut);
+   const result2 = getMockLoaderResult(mockHTML2)(mockCSSModuleOut);
+   const result3 = getMockLoaderResult(mockHTML3)(mockCSSModuleOut);
+   const result4 = getMockLoaderResult(mockHTML4)(mockCSSModuleOut);
+
+   t.is(result, '<div class="g33t1ng5 aloha">World</div>');
+   t.is(result2, "<div class='g33t1ng5 aloha'>World</div>");
+   t.is(result3, "<div class=\"g33t1ng5 aloha\">World</div>");
+   t.is(result4, '<div class=\"g33t1ng5 aloha\">World</div>');
 });
