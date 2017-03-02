@@ -13,7 +13,7 @@ const cssModuleTemplateLoader = content => {
 
             var classNames = $1;
             var newClassNames = classNames.split(" ")
-                                            .map(n => styles[n] || n)
+                                            .map(function(n){ return styles[n] || n; })
                                             .join(" ");
 
             return $0 + newClassNames;

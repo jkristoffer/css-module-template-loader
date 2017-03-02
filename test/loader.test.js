@@ -1,5 +1,7 @@
 const test = require('ava').test;
 const loader = require('../index.js');
+const mock = require('./mock.js');
+
 const getMockLoaderResult = source => {
    const fn = loader(source);
    const m = new module.constructor();
@@ -52,4 +54,13 @@ test('single and double quotes', t => {
    t.is(result2, "<div class='g33t1ng5 aloha'>World</div>");
    t.is(result3, "<div class=\"g33t1ng5 aloha\">World</div>");
    t.is(result4, '<div class=\"g33t1ng5 aloha\">World</div>');
+});
+
+test('with real life sample', t => {
+   const mockHTML = mock.html;
+   const mockCSSModuleOut = mock.css;
+
+   const result = getMockLoaderResult(mockHTML)(mockCSSModuleOut);
+
+   t.is(result, mock.result);
 });
